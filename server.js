@@ -25,13 +25,19 @@ const server = app.listen(port, () => {
     console.log(`running on localhost: ${port}`);
 });
 
+// Server Routes
 app.get('/', (request, response) => {
+    response.sendFile('website/index.html');
+});
+
+app.get('/lastEntry', (request, response) => {
     response.send(projectData);
 });
 
-app.post('/', (request, response) => {
+app.post('/addData', (request, response) => {
     const data = request.body;
     projectData['date'] = data.date;
     projectData['temperature'] = data.temperature;
-    projectData['userResponsee'] = data.userResponse;
+    projectData['userResponse'] = data.userResponse;
+    response.send(projectData);
 });
