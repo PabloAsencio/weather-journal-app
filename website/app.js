@@ -1,6 +1,6 @@
 /* Global Variables */
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '';
+const apiKey = ''; // Replace with your own API key
 
 // Create a new date instance dynamically with JS
 let d = new Date();
@@ -17,9 +17,10 @@ const fechtWeatherData = async (baseURL, zipCode, key) => {
             temperature: data.main.temp,
         };
     } catch (error) {
+        console.log(error);
         return {
-            errorMessage:
-                'Ooops! We had a problem retrieving the data.\nPlease, try again!',
+            temperature:
+                'No temperature was found for this location. Try again!',
         };
     }
 };
